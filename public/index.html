@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<!-- Application Title -->
+	<title>Digital Invoice Generator</title>
+
+	<!-- Add CSS File -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<!-- Meta Information -->
+	<meta charset="utf-8"/>
+	<meta name="Description" content="A website to generate invoice/bill for your business"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<!-- Include CSS files -->
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+
+	<!-- firebase scripts -->
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+	<script>
+	  // Your web app's Firebase configuration
+	  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyAxMAGKfJ4NSE3y42wIurBbAAgkXgVyriQ",
+	    authDomain: "invoice-generator-f01ad.firebaseapp.com",
+	    databaseURL: "https://invoice-generator-f01ad.firebaseio.com",
+	    projectId: "invoice-generator-f01ad",
+	    storageBucket: "invoice-generator-f01ad.appspot.com",
+	    messagingSenderId: "382387452222",
+	    appId: "1:382387452222:web:d10352a0d0816bcdda946f",
+	    measurementId: "G-SL3MSYFQL4"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	  firebase.analytics();
+	</script>
+</head>
+<body>
+	<h2 align="center">Invoice Generator</h2>
+	<form id="form">
+		<!--User interface -->
+		<fieldset id="details">
+			<legend>Sales Invoice</legend>
+			<div class="flexbox-container">
+				<!-- labels -->
+				<div class="format-label">
+					<label for="billto">Bill To: </label><br><br>
+					<label for="prodes">Product Description: </label><br><br>
+					<label for="price">Price: </label><br><br>
+					<label for="quantity">Quantity: </label><br><br>
+				</div>
+				<!-- inputs -->
+				<div class="format-input">
+					<input type="text" name="customername" placeholder="Customer Name" id="customerName"><br><br>
+					<input type="text" name="productname" placeholder="Product Description" id="productName"><br><br>
+					<input type="number" name="price" placeholder="Customer Name" value="0" id="price"><br><br>
+					<input type="number" name="quantity" placeholder="Customer Name" value="0" id="quantity"><br><br>
+				</div>	
+				<!-- Text area -->
+				<textarea id="itemlist" rows="5" cols="30" class="itemlist"></textarea> 
+				<label for="totalamount">Total: </label><label id="totalamount"></label>
+			</div>
+			<hr>
+		</fieldset>
+	</form>
+	<div class="tax-flexbox">
+		<fieldset>
+			<legend>Tax</legend>	
+			<label for="GST">GST:<input type="number" value="0" id="gst"></label>
+		</fieldset>
+		
+	</div>
+	<!-- Form Buttons -->
+	<div class="button-flexbox">
+		<button id="additem" value="+Add Item" class="buttonformat" onclick="addItem()">+Add</button>
+		<button onclick="getData()">Save Data</button>
+		<button id="reset" onclick="reset()">Reset</button>
+		<button id="totalamount" onclick="totalAmount()">Total amount</button>
+	</div> 
+	<script type="text/javascript" src="main.js"></script>	
+</body>
